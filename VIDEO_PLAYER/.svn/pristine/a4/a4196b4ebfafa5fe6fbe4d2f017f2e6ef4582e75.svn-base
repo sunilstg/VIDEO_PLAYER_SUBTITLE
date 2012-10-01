@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+  <TITLE>KH Video Player for TTIME</TITLE>
+  <script type="text/javascript" src="javascript/swfobject.js"></script>
+  	<script language="JavaScript" type="text/javascript">
+
+	function getFlashMovieObject(movieName)
+	{
+	  if (window.document[movieName]) 
+	  {
+		return window.document[movieName];
+	  }
+	  if (navigator.appName.indexOf("Microsoft Internet")==-1)
+	  {
+		if (document.embeds && document.embeds[movieName])
+		  return document.embeds[movieName]; 
+	  }
+	  else // if (navigator.appName.indexOf("Microsoft Internet")!=-1)
+	  {
+		return document.getElementById(movieName);
+	  }
+	}
+
+function PlayFlashMovie(){
+	var flashMovie=getFlashMovieObject("khVideoPlayer");
+	flashMovie.fullScreen();
+}
+
+</script>
+
+ </HEAD>
+ <BODY bgcolor="404040">
+ <table width=800>
+  	<div id="flashcontent">
+		<strong>You need to upgrade your Flash Player</strong>
+	</div>
+	 <script type="text/javascript" src="swfobject.js"></script>
+	<script type="text/javascript">
+	//so.addVariable("defaultVideo", "1"); // User Id 
+	var so = new SWFObject("Index.swf", "khVideoPlayer", "640", "480", "10", "0X000000"); //Min-width:300, Min-height: 175
+	    so.addParam('allowfullscreen','true');
+		so.addParam('allowscriptaccess','always');
+		so.addVariable("file", "Complaint_high.flv"); // User Id 
+		//so.addVariable("subtitlepath", "http://video.knowledgehorizon.com/subtitle/");
+		//so.addVariable("subtitles", "1, ar,adabtabilit/1_AR.txt |2, images/1_ER.txt| 3,images/1_FR.txt");		
+		//so.addVariable("image", "");
+		so.addVariable("goldenxml", "7star.xml");
+		so.addVariable("introVideoAvailable", "false");
+		so.addVariable("autostart", "true");
+		so.addParam("scale", "noscale");
+		so.write("flashcontent");
+</script>
+
+
+
+
+ <button type="button" onclick="PlayFlashMovie()">FullScreen</button>
+
+ </BODY>
+</HTML>
